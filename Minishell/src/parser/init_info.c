@@ -97,10 +97,10 @@ void	init_info_list(char **commands, t_info *curr, int i, int index)
 		{
 			if (i == 0)
 				return ;
-			// if ((commands[i - 1][0] == REDIR_O || \
-			// commands[i - 1][0] == REDIR_APPEND) \
-			// && (curr->redir[OUT].file_name && curr->cmd == NULL))
-			// 	set_new_output_file(&index, curr);
+			/* if ((commands[i - 1][0] == REDIR_O || \
+			commands[i - 1][0] == REDIR_APPEND) \
+			&& (curr->redir[OUT].file_name && curr->cmd == NULL))
+			 	set_new_output_file(&index, curr); */
 		}
 		else
 		{

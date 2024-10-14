@@ -12,6 +12,8 @@
 
 #include "../include/minishell.h"
 
+t_var g_var;
+
 static char	*read_input(void)
 {
 	char	*read;

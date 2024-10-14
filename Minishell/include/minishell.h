@@ -51,7 +51,7 @@ typedef struct s_var
 	int		exit_code;
 }	t_var;
 
-t_var	g_var;
+extern t_var	g_var;
 
 typedef struct s_export
 {

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
+#include <sys/wait.h>
 
 static void	init_info(t_info *cur_info)
 {

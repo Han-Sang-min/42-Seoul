@@ -20,11 +20,11 @@ static int	find_path(char **path)
 	return (0);
 }
 
-static char	*extra_parsing_cmd(char *cmd, \
-char *path, char *ret_cmd, const int cmd_size)
+static char	*extra_parsing_cmd(char *cmd, char *path, const int cmd_size)
 {
 	struct stat	sb;
 	int	path_size;
+	char	*ret_cmd;
 
 	while (TRUE)
 	{
@@ -69,10 +69,10 @@ char	*parsing_cmd(char *cmd)
 	path = getenv("PATH");
 	if (path == NULL)
 		err_exit(cmd);
-	ret_cmd = extra_parsing_cmd(cmd, path, ret_cmd, cmd_size);
-	free(cmd);
+	ret_cmd = extra_parsing_cmd(cmd, path, cmd_size);
 	stat(ret_cmd, &sb);
 	if (access(ret_cmd, F_OK | X_OK) || ((sb.st_mode & S_IFMT) != S_IFREG))
 		invalid_cmd_error(cmd);
+	free(cmd);
 	return (ret_cmd);
 }
