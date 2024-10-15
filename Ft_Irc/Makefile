@@ -1,18 +1,18 @@
 NAME = ircserv.a
 OUT = ircserv
-CCX = c++
+CCX = g++
 SRC_DIR = src/
 SRC_NODIR = main.cpp Server.cpp UserManager.cpp User.cpp Command.cpp Utils.cpp Channel.cpp ChannelManager.cpp IRCMessage.cpp NumericReplies.cpp
 SRC = $(addprefix $(SRC_DIR), $(SRC_NODIR))
 OBJ = $(SRC:.cpp=.o)
 ifdef valgrind
-CXXFLAGS = -Wall -Wextra -Werror -g -std=c++98 -fvisibility=hidden
+CXXFLAGS = -Wall -Wextra -Werror -g -std=c++17 -fvisibility=hidden
 else
 ifdef debug
-CXXFLAGS = -g -Wall -Wextra -Werror -fsanitize=address -I./include -std=c++98 -pedantic -fvisibility=hidden
+CXXFLAGS = -g -Wall -Wextra -Werror -fsanitize=address -I./include -std=c++17 -pedantic -fvisibility=hidden
 else
 ifdef leaks
-CXXFLAGS = -Wall -Wextra -Werror -I./include -pedantic -D DEBUG=1 -std=c++98 -fvisibility=hidden -g
+CXXFLAGS = -Wall -Wextra -Werror -I./include -pedantic -D DEBUG=1 -std=c++17 -fvisibility=hidden -g
 else
 CXXFLAGS = -Wall -Wextra -Werror -fvisibility=hidden
 endif
@@ -25,7 +25,7 @@ $(NAME) : $(OBJ)
 	@$(CCX) $(CXXFLAGS) $@ -o $(OUT)
 docker:
 	@docker build -t irc .
-	@docker run -it -v $(CURDIR):/irc irc
+	@docker run -d -v $(CURDIR):/irc irc
 	# @docker run -it -p 5000-5010:5000-5010 -v $(CURDIR):/irc irc
 debug:
 	@make fclean
