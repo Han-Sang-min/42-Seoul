@@ -5,12 +5,14 @@ PASSWORD=1234
 
 IRC_PATH="/irc"
 
+cd $IRC_PATH
+if [ ! -f "ircserv" ]; then
+	echo "Building ircserv..."
+	make all
+fi
+
 echo "Server IP: $IP"
 echo "Port: $PORT"
 echo "Password: $PASSWORD"
 
-if [ ! -f "$IRC_PATH/ircserv" ]; then
-	echo "Building ircserv..."
-	make all
-fi
-"$IRC_PATH/ircserv" $PORT $PASSWORD
+./ircserv $PORT $PASSWORD

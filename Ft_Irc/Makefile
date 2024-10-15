@@ -25,7 +25,7 @@ $(NAME) : $(OBJ)
 	@$(CCX) $(CXXFLAGS) $@ -o $(OUT)
 docker:
 	@docker build -t irc .
-	@docker run -d -v $(CURDIR):/irc irc
+	@docker run -it -v $(CURDIR):/irc irc
 	# @docker run -it -p 5000-5010:5000-5010 -v $(CURDIR):/irc irc
 debug:
 	@make fclean
